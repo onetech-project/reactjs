@@ -1,32 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../../logo.svg'
 import './index.css';
 
-const Header = () => {
-  const toggleSidebar = () => {
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
-    const menuIcon = document.getElementById('menu-icon');
+const Header = ({ isSidebarOpen, toggleSidebar }) => {
+  const [menuIcon, setMenuIcon] = useState('bi-list');
+  const [menuColor, setMenuColor] = useState('#000');
 
-    sidebar.classList.toggle('open');
-    content.classList.toggle('collapsed');
+  useEffect(() => {
+    setMenuIcon(isSidebarOpen ? 'bi-x' : 'bi-list');
+    setMenuColor(isSidebarOpen ? '#FFF' : '#000');
+  }, [isSidebarOpen])
 
-    menuIcon.classList.toggle('bi-list') // Icon burger
-    menuIcon.classList.toggle('bi-x') // Icon silang (X)
-
-    // Toggle the icon between burger and X
-    if (sidebar.classList.contains('open')) {
-      menuIcon.style.color = '#FFF';
-    } else {
-      menuIcon.style.color = '#000';
-    }
-  }
   return (
-    <div id="header" className="header">
+    <div className="header">
       <div className="logo"><Link to="/"><img src={Logo} alt='Logo'></img></Link></div>
       <button className="toggle-btn" onClick={toggleSidebar}>
-        <i id="menu-icon" className="bi bi-list"></i>
+        <i style={{ color: menuColor }} className={`bi ${menuIcon}`} />
       </button>
     </div>
   )

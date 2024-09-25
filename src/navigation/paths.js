@@ -12,31 +12,31 @@ const paths = {
       children: [
         {
           name: 'Dashboard',
-          path: '/dashboard',
+          path: 'dashboard',
           component: <>Dashboard</>,
           isMenu: true
         },
         {
           name: 'Transfer',
-          path: '/transfer',
+          path: 'transfer',
           component: <>Transfer</>,
           isMenu: true
         },
         {
           name: 'Purchase',
-          path: '/purchase',
+          path: 'purchase',
           component: <>Purchase</>,
           isMenu: true
         },
         {
           name: 'Payment',
-          path: '/payment',
+          path: 'payment',
           component: <>Payment</>,
           isMenu: true
         },
         {
           name: 'Profile',
-          path: '/profile',
+          path: 'profile',
           component: <>Profile</>,
           isMenu: true
         },
