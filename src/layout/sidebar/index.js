@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import './index.css';
+import { useDispatch, useSelector } from "react-redux";
+import { profileAction } from '../../stores/actions'
 import paths from "../../navigation/paths";
+import './index.css';
 
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
-  const authReducer = useSelector(state => state.authReducer);
-  const { auth } = authReducer || {};
+  const dispatch = useDispatch();
+  const profileReducer = useSelector(state => state.profileReducer);
+  const { profile } = profileReducer || {};
+
+  useEffect(() => {
+    dispatch(profileAction.fetchDataProfile())
+  }, [])
 
   return (
     <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
       <div className="profile">
-        <img src={auth?.image} alt="Foto Profil" />
-        <h3>{auth?.firstName} {auth?.lastName}</h3>
+        <img src={profile?.image} alt="Foto Profil" />
+        <h3>{profile?.firstName} {profile?.lastName}</h3>
       </div>
 
       <ul>

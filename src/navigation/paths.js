@@ -35,12 +35,6 @@ const paths = {
           isMenu: true
         },
         {
-          name: 'Profile',
-          path: 'profile',
-          component: <>Profile</>,
-          isMenu: true
-        },
-        {
           path: '*',
           component: <>404</>
         }

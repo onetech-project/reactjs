@@ -1,4 +1,3 @@
-import { authAPI } from '../../apis';
 import { FETCH_REFRESH } from '../types';
 
 export const fetchRefresh = {
@@ -17,13 +16,3 @@ export const fetchRefresh = {
     type: FETCH_REFRESH.RESET,
   }),
 }
-
-export const fetchDataRefresh = (refreshToken) => async (dispatch) => {
-  try {
-    dispatch(fetchRefresh.request());
-    const data = await authAPI.refreshToken(refreshToken);
-    dispatch(fetchRefresh.succeed(data))
-  } catch (error) {
-    dispatch(fetchRefresh.failed(error));
-  }
-};
