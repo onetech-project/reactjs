@@ -1,26 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import './index.css';
+import paths from "../../navigation/paths";
 
 const Sidebar = () => {
+  const authReducer = useSelector(state => state.authReducer);
+  const { auth } = authReducer || {};
+
   return (
     <div className="sidebar" id="sidebar">
       <div className="profile">
-        <img src="https://via.placeholder.com/100" alt="Foto Profil" />
-        <h3>Jane Doe</h3>
+        <img src={auth?.image} alt="Foto Profil" />
+        <h3>{auth?.firstName} {auth?.lastName}</h3>
       </div>
 
       <ul>
-        <li><Link to="dashboard">Dashboard</Link></li>
-        <li><Link to="profile">Profile</Link></li>
-        <li><Link to="settings">Settings</Link></li>
+        {paths.protected[0].children.filter(x => x.isMenu).map(x => <li key={x.path}><Link to={x.path}>{x.name}</Link></li>)}
+        <li><Link to="/logout">Logout</Link></li>
       </ul>
 
-      <ul className="mobile-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">About</a></li>
-        <li><a href="/">Contact</a></li>
-      </ul>
     </div>
   )
 }

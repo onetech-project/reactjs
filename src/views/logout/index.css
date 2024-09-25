@@ -1,0 +1,35 @@
+.logout-container {
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #fff, #d2b48c);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #8b4513;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.logout-container h2 {
+  color: #5c4033;
+  font-size: 24px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

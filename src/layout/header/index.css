@@ -32,7 +32,11 @@
   z-index: 11;
 }
 
-.toggle-btn img {
+.toggle-btn i {
+  display: none;
+}
+
+.logo img {
   width: 30px;
   height: 30px;
 }
@@ -46,11 +50,11 @@
     z-index: 11;
   }
 
-  .header {
-    padding: 20px;
+  .toggle-btn i {
+    display: block;
   }
 
-  .header nav {
-    display: none;
+  .header {
+    padding: 20px;
   }
 }

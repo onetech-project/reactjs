@@ -1,43 +1,62 @@
-import { lazy } from 'react';
-import Layout from '../layout';
+import React, { lazy } from 'react';
 
-// const Layout = lazy(() => import('../layout'))
+const Layout = lazy(() => import('../layout'));
+const Login = lazy(() => import('../views/login'));
+const Logout = lazy(() => import('../views/logout'));
 
-const paths = [
-  {
-    path: '/app',
-    component: <Layout />,
-    children: [
-      {
-        path: '/dashboard',
-        component: <>Dashboard</>
-      },
-      {
-        path: '/transfer',
-        component: <>Transfer</>
-      },
-      {
-        path: '/purchase',
-        component: <>Purchase</>
-      },
-      {
-        path: '/purchase',
-        component: <>Payment</>
-      },
-      {
-        path: '/profile',
-        component: <>Profile</>
-      },
-      {
-        path: '*',
-        component: <>404</>
-      }
-    ]
-  },
-  {
-    path: '/login',
-    component: <>Login</>
-  },
-]
+const paths = {
+  protected: [
+    {
+      path: '/app',
+      component: <Layout />,
+      children: [
+        {
+          name: 'Dashboard',
+          path: '/dashboard',
+          component: <>Dashboard</>,
+          isMenu: true
+        },
+        {
+          name: 'Transfer',
+          path: '/transfer',
+          component: <>Transfer</>,
+          isMenu: true
+        },
+        {
+          name: 'Purchase',
+          path: '/purchase',
+          component: <>Purchase</>,
+          isMenu: true
+        },
+        {
+          name: 'Payment',
+          path: '/payment',
+          component: <>Payment</>,
+          isMenu: true
+        },
+        {
+          name: 'Profile',
+          path: '/profile',
+          component: <>Profile</>,
+          isMenu: true
+        },
+        {
+          path: '*',
+          component: <>404</>
+        }
+      ]
+    },
+  ],
+  public: [
+    {
+      path: '/',
+      component: <Login />
+    },
+    {
+      path: '/logout',
+      component: <Logout />,
+    }
+  ]
+}
 
 export default paths;

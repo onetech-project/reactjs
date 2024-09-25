@@ -1,15 +1,11 @@
 .content {
   flex: 1;
   padding: 100px 30px;
-  margin-right: 0;
+  margin-right: 250px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   transition: margin-right 0.3s ease;
-}
-
-.content.collapsed {
-  margin-right: 250px;
 }
 
 @media (max-width: 768px) {
